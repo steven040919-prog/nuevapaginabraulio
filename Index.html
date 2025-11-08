@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Colegio Nocturno Braulio Carrillo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+        content="Sitio web institucional del Colegio Nocturno Braulio Carrillo. Educación secundaria nocturna para jóvenes y personas adultas en Costa Rica." />
+
+  <!-- Fuente Google -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap"
+        rel="stylesheet" />
+
+  <style>
+    :root {
+      --azul-oscuro: #0b2147;
+      --azul-claro: #1e4c86;
+      --dorado: #f2b544;
+      --gris-claro: #f5f5f7;
+      --blanco: #ffffff;
+      --texto: #252525;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      color: var(--texto);
+      background-color: var(--gris-claro);
+      line-height: 1.6;
+    }
+
+    /* HEADER / NAV */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: rgba(11, 33, 71, 0.95);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.6rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--blanco);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    /* AQUÍ SE AJUSTÓ PARA USAR EL LOGO */
+    .brand-logo {
+      width: 120px; /* Ancho del logo AUMENTADO a 120px */
+      height: auto;
+    }
+
+    .brand-logo img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px; /* Opcional: para suavizar bordes si la imagen es cuadrada */
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-text span:first-child {
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .brand-text span:last-child {
+      font-size: 0.7rem;
+      opacity: 0.8;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      font-size: 0.9rem;
+    }
+
+    nav a {
+      color: var(--blanco);
+      text-decoration: none;
+      padding: 0.3rem 0.6rem;
+      border-radius: 999px;
+      transition: background 0.2s, color 0.2s, transform 0.1s;
+    }
+
+    nav a:hover {
+      background: var(--dorado);
+      color: var(--azul-oscuro);
+      transform: translateY(-1px);
+    }
+
+    /* HERO */
+
+    .hero {
+      background: radial-gradient(circle at top left, #1e4c86, #0b2147 55%, #050814);
+      color: var(--blanco);
+      padding: 4rem 1rem 3.5rem;
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.3fr);
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 span {
+      color: var(--dorado);
+    }
+
+    .hero p {
+      font-size: 0.95rem;
+      max-width: 32rem;
+      opacity: 0.96;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .badge {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.55);
+      backdrop-filter: blur(6px);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      border-radius: 999px;
+      padding: 0.55rem 1.25rem;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.1s, box-shadow 0.1s, background 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--dorado);
+      color: var(--azul-oscuro);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+      background: #ffd26f;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--blanco);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-1px);
+    }
+
+    .hero-side-card {
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 1.2rem;
+      padding: 1.4rem 1.3rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-side-card h2 {
+      font-size: 1.05rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+      margin: 1rem 0;
+    }
+
+    .stat {
+      background: rgba(0,0,0,0.18);
+      border-radius: 0.9rem;
+      padding: 0.6rem 0.7rem;
+      font-size: 0.8rem;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.1rem;
+      color: var(--dorado);
+      margin-bottom: 0.1rem;
+    }
+
+    .hero-mini-note {
+      font-size: 0.75rem;
+      opacity: 0.8;
+    }
+
+    /* SECCIONES GENERALES */
+
+    section {
+      padding: 3rem 1rem;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+      color: var(--azul-oscuro);
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 2rem;
+    }
+
+    /* SOBRE */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 2rem;
+    }
+
+    .about-block h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+      color: var(--azul-claro);
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.8rem;
+    }
+
+    .pill {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: #e3edf9;
+      color: var(--azul-oscuro);
+    }
+
+    .about-card {
+      background: var(--blanco);
+      border-radius: 1rem;
+      padding: 1.2rem 1.4rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+      border-top: 4px solid var(--dorado);
+      font-size: 0.87rem;
+    }
+
+    .about-card h4 {
+      margin-bottom: 0.5rem;
+      color: var(--azul-claro);
+    }
+
+    .about-card ul {
+      padding-left: 1.1rem;
+    }
+
+    .about-card li {
+      margin-bottom: 0.2rem;
+    }
+
+    /* OFERTA ACADÉMICA */
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: var(--blanco);
+      border-radius: 0.9rem;
+      padding: 1.1rem 1.1rem 1.2rem;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
+      border: 1px solid #e4e6ee;
+      font-size: 0.87rem;
+    }
+
+    .card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.4rem;
+      color: var(--azul-claro);
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      background: #eef3ff;
+      color: var(--azul-claro);
+      margin-bottom: 0.4rem;
+    }
+
+    .card ul {
+      padding-left: 1.1rem;
+      margin-top: 0.3rem;
+    }
+
+    .card li {
+      margin-bottom: 0.2rem;
+    }
+
+    /* COMUNIDAD EDUCATIVA */
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 2fr);
+      gap: 1.5rem;
+    }
+
+    .list-simple {
+      background: var(--blanco);
+      border-radius: 1rem;
+      padding: 1rem 1.2rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+      font-size: 0.86rem;
+    }
+
+    .list-simple h3 {
+      margin-bottom: 0.6rem;
+      color: var(--azul-claro);
+    }
+
+    .list-simple ul {
+      padding-left: 1.1rem;
+    }
+
+    .list-simple li {
+      margin-bottom: 0.25rem;
+    }
+
+    .highlight-box {
+      background: linear-gradient(135deg, #e9f4ff, #fdfaf3);
+      border-radius: 1rem;
+      padding: 1rem 1.2rem;
+      font-size: 0.86rem;
+      border: 1px solid #d9e4f9;
+    }
+
+    .highlight-box strong {
+      color: var(--azul-claro);
+    }
+
+    /* NOTICIAS */
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .news-card {
+      background: var(--blanco);
+      border-radius: 0.9rem;
+      padding: 1rem 1.1rem;
+      border-left: 4px solid var(--azul-claro);
+      font-size: 0.84rem;
+    }
+
+    .news-date {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #888;
+      margin-bottom: 0.2rem;
+    }
+
+    .news-card h3 {
+      font-size: 0.95rem;
+      margin-bottom: 0.3rem;
+      color: var(--azul-oscuro);
+    }
+
+    /* CONTACTO */
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 2fr);
+      gap: 1.7rem;
+      align-items: start;
+    }
+
+    .contact-info {
+      font-size: 0.9rem;
+    }
+
+    .contact-info p {
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-info strong {
+      color: var(--azul-claro);
+    }
+
+    .contact-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 0.4rem;
+      font-size: 0.86rem;
+      color: var(--azul-claro);
+      text-decoration: none;
+    }
+
+    .contact-links a:hover {
+      text-decoration: underline;
+    }
+
+    .contact-form {
+      background: var(--blanco);
+      border-radius: 1rem;
+      padding: 1.2rem 1.3rem 1.3rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+      font-size: 0.9rem;
+    }
+
+    .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .form-group {
+      flex: 1 1 180px;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 0.8rem;
+    }
+
+    label {
+      font-size: 0.78rem;
+      margin-bottom: 0.15rem;
+      color: #555;
+    }
+
+    input,
+    textarea,
+    select {
+      border-radius: 0.6rem;
+      border: 1px solid #ccd3e4;
+      padding: 0.45rem 0.55rem;
+      font-family: inherit;
+      font-size: 0.85rem;
+      outline: none;
+      transition: border 0.15s, box-shadow 0.15s;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: var(--azul-claro);
+      box-shadow: 0 0 0 2px rgba(30, 76, 134, 0.18);
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .contact-form button {
+      margin-top: 0.5rem;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #050814;
+      color: #aaa;
+      padding: 1.5rem 1rem;
+      font-size: 0.8rem;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .footer-inner a {
+      color: #ddd;
+      text-decoration: none;
+      font-size: 0.78rem;
+    }
+
+    .footer-inner a:hover {
+      text-decoration: underline;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 900px) {
+      .hero-inner,
+      .about-grid,
+      .two-col,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 3.2rem;
+      }
+
+      .hero-inner {
+        gap: 2rem;
+      }
+
+      nav ul {
+        display: none; /* versión simple sin menú móvil avanzado */
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+
+      .section-title {
+        font-size: 1.35rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="nav-container">
+      <div class="brand">
+        <div class="brand-logo">
+          <!-- CAMBIO: Se usa el enlace directo de Imgur proporcionado por el usuario -->
+          <img src="https://i.imgur.com/bHK8upr.jpeg" alt="Logo Colegio Nocturno Braulio Carrillo">
+        </div>
+        <div class="brand-text">
+          <span>Colegio Nocturno Braulio Carrillo</span>
+          <span>Educación secundaria para jóvenes y personas adultas</span>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#sobre">Sobre nosotros</a></li>
+          <li><a href="#oferta">Oferta académica</a></li>
+          <li><a href="#comunidad">Comunidad educativa</a></li>
+          <li><a href="#noticias">Noticias</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="inicio" class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badges">
+          <span class="badge">Colegio Académico Nocturno</span>
+          <span class="badge">Ministerio de Educación Pública – Costa Rica</span>
+        </div>
+
+        <h1>
+          Educación de calidad para quienes estudian
+          <span>de noche</span>.
+        </h1>
+        <p>
+          El Colegio Nocturno Braulio Carrillo ofrece oportunidades reales para que
+          jóvenes y personas adultas concluyan su educación secundaria, desarrollen
+          sus talentos y fortalezcan sus proyectos de vida.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#oferta" class="btn btn-primary">Ver oferta académica</a>
+          <a href="#contacto" class="btn btn-ghost">Información de matrícula</a>
+        </div>
+      </div>
+
+      <aside class="hero-side-card">
+        <h2>Formación integral con enfoque humano</h2>
+        <p class="hero-mini-note">
+          Acompañamos cada trayectoria con apoyo pedagógico, orientación y un
+          ambiente seguro e inclusivo.
+        </p>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <strong>III Ciclo</strong>
+            Sétimo, octavo y noveno año para jóvenes y adultos.
+          </div>
+          <div class="stat">
+            <strong>Diversificada</strong>
+            Décimo y undécimo año, Bachillerato en Educación Media.
+          </div>
+          <div class="stat">
+            <strong>Nocturno</strong>
+            Horario vespertino–nocturno que se adapta a tu realidad laboral y familiar.
+          </div>
+          <div class="stat">
+            <strong>Apoyo</strong>
+            Orientación, proyectos de vida y acompañamiento socioemocional.
+          </div>
+        </div>
+
+        <p class="hero-mini-note">
+          <strong>Ubicación:</strong> San Juan de Tibás, San José, Costa Rica.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- SOBRE NOSOTROS -->
+  <section id="sobre">
+    <div class="section-inner">
+      <h2 class="section-title">Sobre nosotros</h2>
+      <p class="section-subtitle">
+        Una institución pública al servicio de jóvenes y personas adultas que desean
+        concluir sus estudios secundarios sin abandonar sus responsabilidades laborales
+        y familiares.
+      </p>
+
+      <div class="about-grid">
+        <div class="about-block">
+          <h3>Misión</h3>
+          <p>
+            Desarrollar integralmente a jóvenes y personas adultas mediante una educación
+            de calidad, flexible e inclusiva, que promueva valores humanos, pensamiento
+            crítico y compromiso social.
+          </p>
+
+          <h3 style="margin-top:1.4rem;">Visión</h3>
+          <p>
+            Ser un centro educativo nocturno reconocido por brindar oportunidades reales
+            de superación, con un clima institucional respetuoso, solidario y orientado
+            al logro académico y personal de cada estudiante.
+          </p>
+
+          <h3 style="margin-top:1.4rem;">Valores</h3>
+          <div class="pill-list">
+            <span class="pill">Respeto</span>
+            <span class="pill">Responsabilidad</span>
+            <span class="pill">Solidaridad</span>
+            <span class="pill">Equidad</span>
+            <span class="pill">Honestidad</span>
+            <span class="pill">Superación personal</span>
+          </div>
+        </div>
+
+        <div class="about-card">
+          <h4>Reseña institucional</h4>
+          <p>
+            El Colegio Nocturno Braulio Carrillo surge como respuesta a la necesidad de
+            brindar educación secundaria a personas que, por trabajo u otras razones, no
+            pueden asistir en horario diurno.
+          </p>
+          <p style="margin-top:0.4rem;">
+            A lo largo de los años, la institución se ha consolidado como un espacio de
+            segundas oportunidades, donde cada promoción de estudiantes demuestra que
+            la educación transforma vidas y comunidades.
+          </p>
+          <ul style="margin-top:0.6rem;">
+            <li>Modalidad académica nocturna.</li>
+            <li>Plan de estudios oficial del MEP.</li>
+            <li>Énfasis en acompañamiento socioemocional.</li>
+            <li>Proyectos culturales y de participación comunitaria.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFERTA ACADÉMICA -->
+  <section id="oferta" style="background:var(--blanco);">
+    <div class="section-inner">
+      <h2 class="section-title">Oferta académica</h2>
+      <p class="section-subtitle">
+        Programas del III Ciclo y Educación Diversificada según lineamientos del
+        Ministerio de Educación Pública, adaptados a la modalidad nocturna.
+      </p>
+
+      <div class="cards-grid">
+        <article class="card">
+          <span class="tag">III Ciclo</span>
+          <h3>Sétimo a noveno año</h3>
+          <p>
+            Dirigido a jóvenes y personas adultas que requieren concluir la educación
+            general básica.
+          </p>
+          <ul>
+            <li>Español, Matemática, Ciencias, Estudios Sociales.</li>
+            <li>Inglés, Educación Cívica, Educación Física.</li>
+            <li>Énfasis en habilidades básicas para la vida.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="tag">Diversificada</span>
+          <h3>Décimo y undécimo año</h3>
+          <p>
+            Bachillerato en Educación Media con orientación académica.
+          </p>
+          <ul>
+            <li>Preparación para pruebas nacionales (según normativa vigente).</li>
+            <li>Desarrollo de proyectos interdisciplinarios.</li>
+            <li>Énfasis en lectura crítica, escritura y razonamiento lógico.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="tag">Apoyos</span>
+          <h3>Acompañamiento al estudiante</h3>
+          <p>
+            Servicios de orientación y apoyo pedagógico para favorecer la permanencia
+            y el éxito en los estudios.
+          </p>
+          <ul>
+            <li>Orientación educativa y vocacional.</li>
+            <li>Acompañamiento socioemocional.</li>
+            <li>Actividades de vida saludable y convivencia.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="tag">Requisitos</span>
+          <h3>Información de matrícula</h3>
+          <p>Algunos requisitos generales son:</p>
+          <ul>
+            <li>Tener la edad mínima establecida para cada nivel.</li>
+            <li>Presentar documento de identidad y certificados de estudios anteriores.</li>
+            <li>Completar formulario de matrícula en la institución.</li>
+          </ul>
+          <p style="margin-top:0.3rem;font-size:0.8rem;">
+            Para requisitos específicos del próximo curso lectivo, consulta la sección
+            de <strong>Noticias y Actividades</strong> o comunícate con la Administración.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMUNIDAD EDUCATIVA -->
+  <section id="comunidad">
+    <div class="section-inner">
+      <h2 class="section-title">Comunidad educativa</h2>
+      <p class="section-subtitle">
+        Un equipo de personas comprometidas con la educación nocturna y el acompañamiento
+        cercano al estudiantado.
+      </p>
+
+      <div class="two-col">
+        <div class="list-simple">
+          <h3>Equipo administrativo y de apoyo</h3>
+          <ul>
+            <li><strong>Dirección:</strong> Dirección institucional y liderazgo pedagógico.</li>
+            <li><strong>Subdirección / Asistencia de dirección:</strong> Gestión académica.</li>
+            <li><strong>Orientación:</strong> Apoyo personal, académico y vocacional.</li>
+            <li><strong>Secretaría / Auxiliar administrativo:</strong> Atención a estudiantes y matrícula.</li>
+            <li><strong>Biblioteca:</strong> Promoción de lectura y apoyo a proyectos.</li>
+          </ul>
+
+          <h3 style="margin-top:1rem;">Personal docente</h3>
+          <p>
+            Docentes de Español, Matemática, Inglés, Ciencias, Estudios Sociales, Educación Cívica,
+            Educación Física, Artes y otras asignaturas, comprometidos con la realidad de los
+            estudiantes nocturnos.
+          </p>
+        </div>
+
+        <div class="highlight-box">
+          <h3 style="margin-bottom:0.4rem;">Proyectos y vida estudiantil</h3>
+          <p>
+            A lo largo del año se desarrollan <strong>proyectos culturales, ferias educativas,
+            actividades deportivas</strong> y acciones de <strong>proyección comunitaria</strong>,
+            promoviendo la participación activa de estudiantes y docentes.
+          </p>
+          <p style="margin-top:0.5rem;">
+            La institución impulsa el respeto a los derechos humanos, la convivencia pacífica
+            y el sentido de pertenencia, reconociendo las múltiples realidades de quienes
+            estudian en horario nocturno.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTICIAS Y ACTIVIDADES -->
+  <section id="noticias" style="background:var(--blanco);">
+    <div class="section-inner">
+      <h2 class="section-title">Noticias y actividades</h2>
+      <p class="section-subtitle">
+        Información general de actividades típicas del colegio. Puedes actualizar estas
+        tarjetas cada curso lectivo con datos reales y fechas específicas.
+      </p>
+
+      <div class="news-grid">
+        <article class="news-card">
+          <div class="news-date">Matrícula</div>
+          <h3>Matrícula para el próximo curso lectivo</h3>
+          <p>
+            La matrícula se realiza en horario vespertino–nocturno directamente en el
+            colegio. Se recomienda llevar documento de identidad, certificados de estudio
+            anteriores y consultar los requisitos específicos por nivel.
+          </p>
+        </article>
+
+        <article class="news-card">
+          <div class="news-date">Actividades</div>
+          <h3>Feria académica y cultural</h3>
+          <p>
+            Espacio donde las asignaturas presentan proyectos, experimentos, exposiciones
+            artísticas y actividades culturales que muestran el talento del estudiantado.
+          </p>
+        </article>
+
+        <article class="news-card">
+          <div class="news-date">Acompañamiento</div>
+          <h3>Charlas de orientación y proyectos de vida</h3>
+          <p>
+            El departamento de Orientación organiza charlas sobre proyecto de vida,
+            habilidades socioemocionales, empleabilidad y oportunidades de educación
+            superior para personas graduadas.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="section-inner">
+      <h2 class="section-title">Contacto</h2>
+      <p class="section-subtitle">
+        Para información actualizada de matrícula, requisitos y horarios, comunícate con
+        la institución mediante los siguientes medios.
+      </p>
+
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p><strong>Dirección:</strong><br>
+            San Juan de Tibás, San José, Costa Rica.  
+            (Referencia: de la estación de servicio cercana, 250 m oeste y 50 m sur).
+          </p>
+          <p><strong>Teléfono:</strong>  (+506) 4205-3663 <!-- actualiza si es necesario --></p>
+          <p><strong>Correo institucional:</strong> col.nocturnobrauliocarrillo@mep.go.cr</p>
+          <p><strong>Horario nocturno:</strong><br>
+            Lunes a viernes, aproximadamente de 4:30 p.m. a 9:50 p.m.
+          </p>
+
+          <div class="contact-links">
+            <!-- Actualiza estos enlaces con los oficiales de la institución -->
+            <a href="#" target="_blank" rel="noopener">Facebook oficial del colegio</a><br>
+            <a href="https://www.mep.go.cr" target="_blank" rel="noopener">Sitio del MEP</a><br>
+            <a href="#inicio">Volver al inicio de la página</a>
+          </div>
+        </div>
+
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('Este es un formulario de ejemplo. Configura el envío en tu servidor o servicio de formularios.');">
+          <h3 style="margin-bottom:0.8rem;">Escríbenos</h3>
+          <p style="font-size:0.82rem;margin-bottom:0.8rem;">
+            Este es un formulario ilustrativo. Para usarlo en producción debes conectarlo
+            a un servicio de formularios o a tu propio servidor.
+          </p>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nombre">Nombre completo</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Nombre y apellidos" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Correo electrónico</label>
+              <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="motivo">Motivo de consulta</label>
+              <select id="motivo" name="motivo">
+                <option value="matricula">Matrícula</option>
+                <option value="oferta">Oferta académica</option>
+                <option value="documentos">Documentación / certificados</option>
+                <option value="otros">Otro</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" placeholder="Escribe tu consulta aquí"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">
+            Enviar mensaje
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <span>© <span id="year"></span> Colegio Nocturno Braulio Carrillo. Todos los derechos reservados.</span>
+      <span>Sitio de demostración editable. Contenido ajustable según directrices institucionales.</span>
+    </div>
+  </footer>
+
+  <script>
+    // Año automático en el footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
